@@ -1,5 +1,7 @@
-SELECT m.identifier AS Attaques
-FROM pokemon AS p
-LEFT JOIN pokemon_moves AS pm ON p.id = pm.pokemon_id
-LEFT JOIN moves AS m ON pm.move_id = m.id
-WHERE p.identifier = 'feraligatr';
+SELECT DISTINCT Attaques FROM 
+(SELECT moves.identifier AS Attaques 
+FROM pokemon 
+LEFT JOIN pokemon_moves ON pokemon.id = pokemon_id 
+LEFT JOIN moves ON move_id = moves.id 
+WHERE pokemon.identifier = 'feraligatr' AND moves.identifier = 'hydro-pump') 
+AS Attaques;
